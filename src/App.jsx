@@ -129,6 +129,7 @@ const LoginForm = ({
       </div>
 
       {loginStep === 1 ? (
+        /* Paso 1: Email y Contraseña */
         <div className="space-y-6">
           <div>
             <label className="block text-sm font-medium text-gray-300 mb-2">Email</label>
@@ -140,8 +141,6 @@ const LoginForm = ({
               placeholder="tu@email.com"
             />
           </div>
-
-
           
           <div>
             <label className="block text-sm font-medium text-gray-300 mb-2">Contraseña</label>
@@ -163,40 +162,11 @@ const LoginForm = ({
             </div>
           </div>
 
-          {/* Selector de método de verificación */}
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-3">Método de verificación 2FA</label>
-            <div className="grid grid-cols-2 gap-3">
-              <button
-                type="button"
-                onClick={() => setVerificationMethod('email')}
-                className={`p-3 rounded-lg border text-sm font-medium transition-all ${
-                  verificationMethod === 'email'
-                    ? 'bg-blue-600 border-blue-500 text-white'
-                    : 'bg-gray-800/50 border-gray-600 text-gray-300 hover:bg-gray-700/50'
-                }`}
-              >
-                📧 Email
-              </button>
-              <button
-                type="button"
-                onClick={() => setVerificationMethod('sms')}
-                className={`p-3 rounded-lg border text-sm font-medium transition-all ${
-                  verificationMethod === 'sms'
-                    ? 'bg-blue-600 border-blue-500 text-white'
-                    : 'bg-gray-800/50 border-gray-600 text-gray-300 hover:bg-gray-700/50'
-                }`}
-              >
-                📱 SMS
-              </button>
-            </div>
-          </div>
-
           <button
             onClick={handleLogin}
             className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105 shadow-lg shadow-blue-500/25"
           >
-            Continuar a verificacion 2FA
+            Continuar
           </button>
 
           {biometricSupported && (
@@ -213,7 +183,73 @@ const LoginForm = ({
             </div>
           )}
         </div>
+      ) : loginStep === 2 ? (
+        /* Paso 2: Configurar Teléfono y Método 2FA */
+        <div className="space-y-6">
+          <div className="text-center">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full mb-4 shadow-lg shadow-purple-500/25">
+              <Smartphone className="w-6 h-6 text-white" />
+            </div>
+            <h2 className="text-xl font-bold text-white mb-2">Configurar 2FA</h2>
+            <p className="text-gray-300 text-sm">Añade tu teléfono para mayor seguridad</p>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-2">Número de Teléfono</label>
+            <input
+              type="tel"
+              value={loginData.phone}
+              onChange={(e) => setLoginData(prev => ({...prev, phone: e.target.value}))}
+              className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent backdrop-blur-sm"
+              placeholder="+34 600 123 456"
+            />
+          </div>
+
+          {/* Selector de método de verificación */}
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-3">Método de verificación 2FA</label>
+            <div className="grid grid-cols-2 gap-3">
+              <button
+                type="button"
+                onClick={() => setVerificationMethod('email')}
+                className={`p-3 rounded-lg border text-sm font-medium transition-all ${
+                  verificationMethod === 'email'
+                    ? 'bg-purple-600 border-purple-500 text-white'
+                    : 'bg-gray-800/50 border-gray-600 text-gray-300 hover:bg-gray-700/50'
+                }`}
+              >
+                📧 Email
+              </button>
+              <button
+                type="button"
+                onClick={() => setVerificationMethod('sms')}
+                className={`p-3 rounded-lg border text-sm font-medium transition-all ${
+                  verificationMethod === 'sms'
+                    ? 'bg-purple-600 border-purple-500 text-white'
+                    : 'bg-gray-800/50 border-gray-600 text-gray-300 hover:bg-gray-700/50'
+                }`}
+              >
+                📱 SMS
+              </button>
+            </div>
+          </div>
+
+          <button
+            onClick={handleLogin}
+            className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-200 transform hover:scale-105 shadow-lg shadow-purple-500/25"
+          >
+            Continuar con 2FA
+          </button>
+
+          <button
+            onClick={() => setLoginStep(1)}
+            className="w-full text-gray-400 text-sm hover:text-white transition-colors"
+          >
+            ← Volver
+          </button>
+        </div>
       ) : (
+        /* Paso 3: Verificación 2FA */
         <div className="space-y-6">
           <div className="text-center">
             <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-green-500 to-teal-600 rounded-full mb-4 shadow-lg shadow-green-500/25">
@@ -259,7 +295,7 @@ const LoginForm = ({
           </div>
 
           <button
-            onClick={() => setLoginStep(1)}
+            onClick={() => setLoginStep(2)}
             className="w-full text-gray-400 text-sm hover:text-white transition-colors"
           >
             ← Volver
@@ -498,10 +534,15 @@ const SecureAuthPro = () => {
   };
 
   const handleLogin = () => {
-    if (loginStep === 1 && loginData.email && loginData.password && loginData.phone) {
+    if (loginStep === 1 && loginData.email && loginData.password) {
+      // Paso 1: Email y contraseña completados, ir a configurar teléfono
       setLoginStep(2);
+    } else if (loginStep === 2 && loginData.phone) {
+      // Paso 2: Teléfono configurado, enviar código y ir a verificación
+      setLoginStep(3);
       sendVerificationCode();
-    } else if (loginStep === 2 && loginData.code) {
+    } else if (loginStep === 3 && loginData.code) {
+      // Paso 3: Código verificado, acceder al dashboard
       setCurrentView('dashboard');
     }
   };
