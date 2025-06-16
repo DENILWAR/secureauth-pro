@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="SecureAuth Pro - Sistema de autenticación de múltiple factor con verificación biométrica" />
+    <meta name="keywords" content="autenticación, 2FA, 3FA, biométrica, seguridad" />
+    <meta name="author" content="SecureAuth Pro" />
+    
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="SecureAuth Pro" />
+    <meta property="og:description" content="Sistema de autenticación ultra-seguro con 2FA/3FA y verificación biométrica" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="SecureAuth Pro" />
+    <meta property="twitter:description" content="Sistema de autenticación ultra-seguro con 2FA/3FA y verificación biométrica" />
+    
+    <title>SecureAuth Pro - Autenticación Ultra-Segura</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><path fill=%22%233b82f6%22 d=%22M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z%22/></svg>" />
+    
+    <style>
+      /* Critical CSS for initial render */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+          'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+      
+      #root {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      /* Loading spinner styles */
+      .loading-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #000000 0%, #342801 50%, #000000 100%);
+      }
+      
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: #ffffff;
+        animation: spin 1s ease-in-out infinite;
+      }
+      
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+      
+      .loading-text {
+        color: white;
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: 500;
+      }
+      
+      /* Error fallback styles */
+      .error-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #1e293b;
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+      
+      .error-content h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: #ef4444;
+      }
+      
+      .error-content p {
+        margin-bottom: 1rem;
+        opacity: 0.8;
+      }
+      
+      .error-button {
+        background: #3b82f6;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 20px;
+        transition: background-color 0.2s;
+      }
+      
+      .error-button:hover {
+        background: #2563eb;
+      }
+      
+      /* Hide loading when React loads */
+      .react-loaded .initial-loading {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loading fallback while React loads -->
+    <div id="initial-loading" class="initial-loading loading-container">
+      <div style="text-align: center;">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Cargando SecureAuth Pro...</div>
+      </div>
+    </div>
+    
+    <!-- React app root -->
+    <div id="root"></div>
+    
+    <!-- Error fallback if React fails to load -->
+    <noscript>
+      <div class="error-container">
+        <div class="error-content">
+          <h1>⚠️ JavaScript Requerido</h1>
+          <p>SecureAuth Pro requiere JavaScript para funcionar.</p>
+          <p>Por favor, habilita JavaScript en tu navegador.</p>
+        </div>
+      </div>
+    </noscript>
+    
+    <!-- Main React application script -->
+    <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Script to hide loading spinner when React loads -->
+    <script>
+      // Hide initial loading when React takes over
+      window.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+          const loading = document.getElementById('initial-loading');
+          if (loading && document.querySelector('#root').children.length > 0) {
+            loading.style.display = 'none';
+          }
+        }, 100);
+      });
+      
+      // Security: Log console access attempts
+      const originalLog = console.log;
+      console.log = function(...args) {
+        originalLog.apply(console, ['🔒 SecureAuth Pro:', ...args]);
+      };
+      
+      // Basic security: Disable right-click in production
+      if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+        document.addEventListener('contextmenu', function(e) {
+          e.preventDefault();
+        });
+        
+        document.addEventListener('keydown', function(e) {
+          // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+          if (e.keyCode === 123 || 
+              (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) ||
+              (e.ctrlKey && e.keyCode === 85)) {
+            e.preventDefault();
+          }
+        });
+      }
+      
+      // Performance monitoring
+      window.addEventListener('load', function() {
+        if (performance.mark) {
+          performance.mark('secureauth-loaded');
+          console.log('🚀 SecureAuth Pro cargado en:', performance.now().toFixed(2) + 'ms');
+        }
+      });
+    </script>
+  </body>
+</html>
