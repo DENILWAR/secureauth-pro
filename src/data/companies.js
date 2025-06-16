@@ -4,6 +4,50 @@ export const trustedCompanies = [
       id: 'techcorp',
       name: 'TechCorp',
       logo: 'https://via.placeholder.com/150x60/2563eb/ffffff?text=TechCorp',
+      industry: 'Technology',
+      size: 'Enterprise',
+      useCase: 'Employee Authentication'
+    },
+    {
+      id: 'financeplus',
+      name: 'FinancePlus',
+      logo: 'https://via.placeholder.com/150x60/059669/ffffff?text=FinancePlus',
+      industry: 'Financial Services',
+      size: 'Large',
+      useCase: 'Customer Banking'
+    },
+    {
+      id: 'healthtech',
+      name: 'HealthTech',
+      logo: 'https://via.placeholder.com/150x60/dc2626/ffffff?text=HealthTech',
+      industry: 'Healthcare',
+      size: 'Medium',
+      useCase: 'Patient Data Access'
+    },
+    {
+      id: 'edulearn',
+      name: 'EduLearn',
+      logo: 'https://via.placeholder.com/150x60/7c3aed/ffffff?text=EduLearn',
+      industry: 'Education',
+      size: 'Large',
+      useCase: 'Student Portal'
+    },
+    {
+      id: 'retailmax',
+      name: 'RetailMax',
+      logo: 'https://via.placeholder.com/150x60/ea580c/ffffff?text=RetailMax',
+      industry: 'Retail',
+      size: 'Enterprise',
+      useCase: 'E-commerce Security'
+    },
+    {
+      id: 'globalmanufacturing',
+      name: 'Global Manufacturing',
+      logo: 'https://via.placeholder.com/150x60/1f2937/ffffff?text=GlobalMfg',
+      industry: 'Manufacturing',
+      size: 'Enterprise',
+      useCase: 'Workforce Management'
+    },
     {
       id: 'startuptech',
       name: 'StartupTech',
@@ -364,52 +408,24 @@ export const trustedCompanies = [
       certifications: certifications.length,
       awards: awards.length
     };
-  };size: 'Enterprise',
-      useCase: 'Employee Authentication'
-    },
-    {
-      id: 'financeplus',
-      name: 'FinancePlus',
-      logo: 'https://via.placeholder.com/150x60/059669/ffffff?text=FinancePlus',
-      industry: 'Financial Services',
-      size: 'Large',
-      useCase: 'Customer Banking'
-    },
-    {
-      id: 'healthtech',
-      name: 'HealthTech',
-      logo: 'https://via.placeholder.com/150x60/dc2626/ffffff?text=HealthTech',
-      industry: 'Healthcare',
-      size: 'Medium',
-      useCase: 'Patient Data Access'
-    },
-    {
-      id: 'edulearn',
-      name: 'EduLearn',
-      logo: 'https://via.placeholder.com/150x60/7c3aed/ffffff?text=EduLearn',
-      industry: 'Education',
-      size: 'Large',
-      useCase: 'Student Portal'
-    },
-    {
-      id: 'retailmax',
-      name: 'RetailMax',
-      logo: 'https://via.placeholder.com/150x60/ea580c/ffffff?text=RetailMax',
-      industry: 'Retail',
-      size: 'Enterprise',
-      useCase: 'E-commerce Security'
-    },
-    {
-      id: 'globalmanufacturing',
-      name: 'Global Manufacturing',
-      logo: 'https://via.placeholder.com/150x60/1f2937/ffffff?text=GlobalMfg',
-      industry: 'Manufacturing',
-      size: 'Enterprise',
-      useCase: 'Workforce Management'
-    },
-    {
-      id: 'startuptech',
-      name: 'StartupTech',
-      logo: 'https://via.placeholder.com/150x60/8b5cf6/ffffff?text=StartupTech',
-      industry: 'Technology',
-    }
+  };
+  
+  export default {
+    trustedCompanies,
+    partnerCompanies,
+    industryLogos,
+    clientStats,
+    successMetrics,
+    certifications,
+    awards,
+    mediaLogos,
+    investorLogos,
+    getCompaniesByIndustry,
+    getCompaniesBySize,
+    getFeaturedLogos,
+    getPartnersByType,
+    getRandomCompanies,
+    getIndustryBreakdown,
+    getSizeBreakdown,
+    getCompanyMetrics
+  };
