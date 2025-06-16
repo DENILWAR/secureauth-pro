@@ -5,97 +5,97 @@
     "description": "Sistema de autenticación de múltiple factor con verificación biométrica y dashboard de seguridad empresarial",
     "type": "module",
     "scripts": {
-      "dev": "vite",
-      "build": "vite build",
-      "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-      "lint:fix": "eslint . --ext js,jsx --fix",
-      "preview": "vite preview",
-      "start": "vite",
-      "build:prod": "vite build --mode production",
-      "build:staging": "vite build --mode staging",
-      "analyze": "vite build --mode analyze",
-      "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,md}\"",
-      "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,json,css,md}\"",
-      "test": "echo \"Tests coming soon...\"",
-      "clean": "rm -rf dist node_modules/.vite"
+        "dev": "vite",
+        "build": "vite build",
+        "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+        "lint:fix": "eslint . --ext js,jsx --fix",
+        "preview": "vite preview",
+        "start": "vite",
+        "build:prod": "vite build --mode production",
+        "build:staging": "vite build --mode staging",
+        "analyze": "vite build --mode analyze",
+        "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,md}\"",
+        "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,json,css,md}\"",
+        "test": "echo \"Tests coming soon...\"",
+        "clean": "rm -rf dist node_modules/.vite"
     },
     "dependencies": {
-      "react": "^18.2.0",
-      "react-dom": "^18.2.0",
-      "react-router-dom": "^6.20.1",
-      "lucide-react": "^0.263.1",
-      "framer-motion": "^10.16.5",
-      "react-hook-form": "^7.48.2",
-      "recharts": "^2.8.0",
-      "react-hot-toast": "^2.4.1",
-      "clsx": "^2.0.0",
-      "date-fns": "^2.30.0"
+        "clsx": "^2.0.0",
+        "date-fns": "^2.30.0",
+        "framer-motion": "^10.16.5",
+        "lucide-react": "^0.263.1",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-hook-form": "^7.48.2",
+        "react-hot-toast": "^2.4.1",
+        "react-router-dom": "^6.20.1",
+        "recharts": "^2.8.0"
     },
     "devDependencies": {
-      "@types/react": "^18.2.15",
-      "@types/react-dom": "^18.2.7",
-      "@vitejs/plugin-react": "^4.0.3",
-      "autoprefixer": "^10.4.14",
-      "eslint": "^8.45.0",
-      "eslint-plugin-react": "^7.32.2",
-      "eslint-plugin-react-hooks": "^4.6.0",
-      "eslint-plugin-react-refresh": "^0.4.3",
-      "eslint-plugin-jsx-a11y": "^6.7.1",
-      "prettier": "^3.1.0",
-      "prettier-plugin-tailwindcss": "^0.5.7",
-      "postcss": "^8.4.27",
-      "tailwindcss": "^3.3.3",
-      "vite": "^4.4.5",
-      "vite-plugin-pwa": "^0.17.4"
+        "@types/react": "^18.2.15",
+        "@types/react-dom": "^18.2.7",
+        "@vitejs/plugin-react": "^4.0.3",
+        "autoprefixer": "^10.4.14",
+        "eslint": "^8.45.0",
+        "eslint-plugin-jsx-a11y": "^6.7.1",
+        "eslint-plugin-react": "^7.32.2",
+        "eslint-plugin-react-hooks": "^4.6.0",
+        "eslint-plugin-react-refresh": "^0.4.3",
+        "postcss": "^8.4.27",
+        "prettier": "^3.1.0",
+        "prettier-plugin-tailwindcss": "^0.5.7",
+        "tailwindcss": "^3.3.3",
+        "vite": "^4.4.5",
+        "vite-plugin-pwa": "^0.17.5"
     },
     "keywords": [
-      "authentication",
-      "2fa",
-      "3fa",
-      "mfa",
-      "biometric",
-      "security",
-      "cybersecurity",
-      "enterprise",
-      "react",
-      "vite",
-      "tailwindcss",
-      "dashboard",
-      "saas"
+        "authentication",
+        "2fa",
+        "3fa",
+        "mfa",
+        "biometric",
+        "security",
+        "cybersecurity",
+        "enterprise",
+        "react",
+        "vite",
+        "tailwindcss",
+        "dashboard",
+        "saas"
     ],
     "author": {
-      "name": "SecureAuth Pro Team",
-      "email": "contact@secureauth-pro.com",
-      "url": "https://secureauth-pro.com"
+        "name": "SecureAuth Pro Team",
+        "email": "contact@secureauth-pro.com",
+        "url": "https://secureauth-pro.com"
     },
     "license": "MIT",
     "homepage": "https://secureauth-pro.com",
     "repository": {
-      "type": "git",
-      "url": "https://github.com/secureauth/secureauth-pro.git"
+        "type": "git",
+        "url": "https://github.com/secureauth/secureauth-pro.git"
     },
     "bugs": {
-      "url": "https://github.com/secureauth/secureauth-pro/issues"
+        "url": "https://github.com/secureauth/secureauth-pro/issues"
     },
     "engines": {
-      "node": ">=16.0.0",
-      "npm": ">=8.0.0"
+        "node": ">=16.0.0",
+        "npm": ">=8.0.0"
     },
     "browserslist": {
-      "production": [
-        ">0.2%",
-        "not dead",
-        "not op_mini all",
-        "not ie <= 11"
-      ],
-      "development": [
-        "last 1 chrome version",
-        "last 1 firefox version",
-        "last 1 safari version"
-      ]
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all",
+            "not ie <= 11"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
     },
     "volta": {
-      "node": "18.18.2",
-      "npm": "9.8.1"
+        "node": "18.18.2",
+        "npm": "9.8.1"
     }
-  }
+}

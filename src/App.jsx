@@ -141,16 +141,7 @@ const LoginForm = ({
             />
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">Número de Teléfono</label>
-            <input
-              type="tel"
-              value={loginData.phone}
-              onChange={(e) => setLoginData(prev => ({...prev, phone: e.target.value}))}
-              className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent backdrop-blur-sm"
-              placeholder="+34 600 123 456"
-            />
-          </div>
+
           
           <div>
             <label className="block text-sm font-medium text-gray-300 mb-2">Contraseña</label>
@@ -205,7 +196,7 @@ const LoginForm = ({
             onClick={handleLogin}
             className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105 shadow-lg shadow-blue-500/25"
           >
-            Continuar
+            Continuar a verificacion 2FA
           </button>
 
           {biometricSupported && (
