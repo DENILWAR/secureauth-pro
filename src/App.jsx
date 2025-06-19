@@ -199,7 +199,11 @@ const LoginForm = ({
             <input
               type="tel"
               value={loginData.phone}
-              onChange={(e) => setLoginData(prev => ({...prev, phone: e.target.value}))}
+              onChange={(e) => {
+                // Solo permitir números, espacios, guiones y el símbolo +
+                const value = e.target.value.replace(/[^0-9+\-\s]/g, '');
+                setLoginData(prev => ({...prev, phone: value}));
+              }}
               className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent backdrop-blur-sm"
               placeholder="+34 600 123 456"
             />
@@ -279,7 +283,11 @@ const LoginForm = ({
               <input
                 type="text"
                 value={loginData.code}
-                onChange={(e) => setLoginData(prev => ({...prev, code: e.target.value}))}
+                onChange={(e) => {
+                  // Solo permitir números y limitar a 6 dígitos
+                  const value = e.target.value.replace(/[^0-9]/g, '').slice(0, 6);
+                  setLoginData(prev => ({...prev, code: value}));
+                }}
                 className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white text-center text-2xl tracking-widest placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent backdrop-blur-sm"
                 placeholder="000000"
                 maxLength="6"
